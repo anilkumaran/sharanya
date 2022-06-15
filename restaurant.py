@@ -2,7 +2,7 @@ import sys
 
 class Restaurant:
     def __init__(self):
-        self.name = 'Sharanya Groups of Restaurants Pvt Ltd.'
+        self.name = 'Sharanya Group of Restaurants Pvt Ltd.'
         self.menu = {
             'Veg': {
                 'Starters': {
@@ -54,7 +54,6 @@ class Restaurant:
 
     def show_menu(self):
         self.print_title('Menu: ')
-
         # food_type: Veg / Non Veg
         for food_type, main_menu in self.menu.items():
             spaces = ' '*0
