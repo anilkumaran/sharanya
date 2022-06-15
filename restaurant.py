@@ -6,56 +6,55 @@ class Restaurant:
         self.menu = {
             'Veg': {
                 'Starters': {
-                    'Paneer 65': {'price': 300, 'varieties': []},
-                    'French Fries': {'price': 400, 'varieties': ['Plain', 'Fried']},
-                    'Baby Corn': {'price': 250, 'varieties': ['Plain', 'crispy']},
-                    'Chilly Mushroom': {'price': 350, 'varieties': ['Dry', 'Wet']},
+                    'Paneer 65': {'price': 300},
+                    'French Fries': {'price': 400},
+                    'Baby Corn': {'price': 250},
+                    'Chilly Mushroom': {'price': 350},
                 },
                 'Main Course': {
-                    'Plain Rice': {'price': 149, 'varieties': []},
-                    'Paneer Fried Rice': {'price': 249, 'varieties': []},
-                    'Veg Biryani': {
-                        'price': 300,
-                        'varieties,': ['Dum', 'Handi', 'Family Pack']
-                    },
+                    'Plain Rice': {'price': 149},
+                    'Paneer Fried Rice': {'price': 249},
+                    'Veg Biryani': {'price': 300},
                 }
             },
             'Non Veg': {
                 'Starters': {
-                    'Apollo Fish': {'price': 300, 'varieties': []},
-                    'Chicken Manchurian': {'price': 250, 'varieties': []},
-                    'Hot & Crispy Chicken': {'price': 350, 'varieties': []},
-                    'King Salmon Strips': {'price': 400, 'varieties': []},
+                    'Apollo Fish': {'price': 300},
+                    'Chicken Manchurian': {'price': 250},
+                    'Hot & Crispy Chicken': {'price': 350},
+                    'King Salmon Strips': {'price': 400},
                 },
                 'Main Course': {
-                    'Chicken Biryani': {
-                        'price': 300,
-                        'varieties,': ['Hyd Dumnki Biryani', 'Spl Biryani', 'Family Pack']
-                    },
-                    'Mutton Biryani': {
-                        'price': 350,
-                        'varieties,': ['Hyd Dumnki Biryanu', 'Spl Biryani', 'Family Pack']
-                    },
-                    'Prwans Biryani': { 'price': 300, 'varieties,': []},
-                    'Fish Biryani': { 'price': 400, 'varieties,': []},
+                    'Chicken Biryani': {'price': 300},
+                    'Mutton Biryani': {'price': 350,},
+                    'Prwans Biryani': {'price': 300},
                 }
             }
         }
         self.item_price_map = {}
         self.total_price = 0
 
-    def welcome_message(self):
+    def show_welcome_msg(self):
         print('#'*80)
         print(f'             Welcome to {self.name}')
         print('#'*80)
+    
+    def show_goodbye_msg(self):
+        print()
+        self.show_bill()
+        print('!!! Thank you, visit again !!!')
 
-    get_name = lambda self, name: ''.join(char.upper() for char in name if char.isalnum())
+    def show_bill(self):
+        print(f'>>>>> Your Total Bill: ₹ {self.total_price}')
+
+    get_upper_name = lambda self, name: ''.join(char.upper() for char in name if char.isalnum())
 
     def print_title(self, title):
         print('{0} {title}'.format(' '*10, title=title))
 
     def show_menu(self):
         self.print_title('Menu: ')
+
         # food_type: Veg / Non Veg
         for food_type, main_menu in self.menu.items():
             spaces = ' '*0
@@ -70,26 +69,32 @@ class Restaurant:
                 for item, item_dtls in main_items.items():
                     item_spaces = ' '*10
                     price = item_dtls['price']
-                    print(f'{item_spaces} - {item.ljust(25)}: ₹{price}')
-                    self.item_price_map[self.get_name(item)] = price
-
+                    print(f'{item_spaces} - {item.ljust(25)}: ₹ {price}')
+                    self.item_price_map[self.get_upper_name(item)] = price
         print()
-        # print(self.item_price_map)
 
-    def select_food_type(self):
-        selected_food = input('Please enter the food name (Ex: Paneer 65 or paneer65): ')
-        selected_food_upper = self.get_name(selected_food)
-        if selected_food_upper in self.item_price_map:
-            self.total_price += self.item_price_map[selected_food_upper]
-            print(f'>>>>> Total price: {self.total_price}')
-        else:
-            print(f'>>>>> Sorry, Currently we are not serving the {selected_food}')
+    def select_another_item(self):
+        another_item = input('Would you like to select another item? (y or n): ')
+        if another_item == 'n':
+            self.show_goodbye_msg()
             sys.exit(1)
 
+    def select_food_item(self):
+        selected_food = input('Please enter the food name (Ex: Paneer65 or Paneer 65 or paneer65): ')
+        selected_food_upper = self.get_upper_name(selected_food)
+        if selected_food_upper in self.item_price_map:
+            self.total_price += self.item_price_map[selected_food_upper]
+            self.show_bill()
+        else:
+            print(f'>>>>> Sorry, Currently we are not serving: {selected_food}')
+        self.select_another_item()
+
     def process(self):
-        self.welcome_message()
-        self.show_menu()
-        self.select_food_type()
+        self.show_welcome_msg()
+        until_user_wants_to_select_food = True
+        while until_user_wants_to_select_food:
+            self.show_menu()
+            self.select_food_item()
 
 
 restaurant = Restaurant()
