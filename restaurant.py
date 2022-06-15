@@ -34,23 +34,19 @@ class Restaurant:
         self.item_price_map = {}
         self.total_price = 0
 
+    get_upper_name = lambda self, name: ''.join(char.upper() for char in name if char.isalnum())
+
+    def process(self):
+        self.show_welcome_msg()
+        until_user_wants_to_select_food = True
+        while until_user_wants_to_select_food:
+            self.show_menu()
+            self.select_food_item()
+
     def show_welcome_msg(self):
         print('#'*80)
         print(f'             Welcome to {self.name}')
         print('#'*80)
-    
-    def show_goodbye_msg(self):
-        print()
-        self.show_bill()
-        print('!!! Thank you, visit again !!!')
-
-    def show_bill(self):
-        print(f'>>>>> Your Total Bill: ₹ {self.total_price}')
-
-    get_upper_name = lambda self, name: ''.join(char.upper() for char in name if char.isalnum())
-
-    def print_title(self, title):
-        print('{0} {title}'.format(' '*10, title=title))
 
     def show_menu(self):
         self.print_title('Menu: ')
@@ -72,12 +68,6 @@ class Restaurant:
                     self.item_price_map[self.get_upper_name(item)] = price
         print()
 
-    def select_another_item(self):
-        another_item = input('Would you like to select another item? (y or n): ')
-        if another_item == 'n':
-            self.show_goodbye_msg()
-            sys.exit(1)
-
     def select_food_item(self):
         selected_food = input('Please enter the food name (Ex: Paneer65 or Paneer 65 or paneer65): ')
         selected_food_upper = self.get_upper_name(selected_food)
@@ -88,12 +78,22 @@ class Restaurant:
             print(f'>>>>> Sorry, Currently we are not serving: {selected_food}')
         self.select_another_item()
 
-    def process(self):
-        self.show_welcome_msg()
-        until_user_wants_to_select_food = True
-        while until_user_wants_to_select_food:
-            self.show_menu()
-            self.select_food_item()
+    def select_another_item(self):
+        another_item = input('Would you like to select another item? (y or n): ')
+        if another_item == 'n':
+            self.show_goodbye_msg()
+            sys.exit(1)
+    
+    def show_bill(self):
+        print(f'>>>>> Your Total Bill: ₹ {self.total_price}')
+
+    def show_goodbye_msg(self):
+        print()
+        self.show_bill()
+        print('!!! Thank you, visit again !!!')
+
+    def print_title(self, title):
+        print('{0} {title}'.format(' '*10, title=title))
 
 
 restaurant = Restaurant()
