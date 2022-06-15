@@ -67,6 +67,9 @@ class Restaurant:
                     print(f'{item_spaces} - {item.ljust(25)}: ₹ {price}')
                     self.item_price_map[self.get_upper_name(item)] = price
         print()
+    
+    def print_title(self, title):
+        print('{0} {title}'.format(' '*10, title=title))
 
     def select_food_item(self):
         selected_food = input('Please enter the food name (Ex: Paneer65 or Paneer 65 or paneer65): ')
@@ -91,9 +94,6 @@ class Restaurant:
         print()
         self.show_bill()
         print('!!! Thank you, visit again !!!')
-
-    def print_title(self, title):
-        print('{0} {title}'.format(' '*10, title=title))
 
 
 restaurant = Restaurant()
