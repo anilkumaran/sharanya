@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basil Woods School Quiz</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #007bff;
+            margin-bottom: 30px;
+            font-size: 36px;
+            background: linear-gradient(to right, #007bff, #00bfff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .button-container button {
+            font-size: 22px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            margin: 10px;
+            padding: 20px;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .button-container button:hover {
+            background-color: #0056b3;
+            transform: scale(1.1);
+        }
+        .button-container .selected {
+            background-color: #6c757d;
+        }
+        .button-container .selected:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <h1>Basil Woods School Quiz</h1>
+    <div class="button-container" id="buttonContainer"></div>
+
+    <script>
+        const questions = {
+            Ramayan: {
+                100: { question: `What is the meaning of Ramayan?`,
+                answer: `
+                    Rama + ayana - means the Journey of Ramachandra (His walk of Life)
+
+                    Ramaa + ayana - The Life of Sita. 
+
+                    Ramaa + ayana  - Life of the people who are related to Rama. 
+
+                    All the characters of Rama from a small Vanara to Ayodhya King Dasaratha , belong to Rama.So it’s the life history of each and every one related to Rama
+                ` },
+                108: {
+                    question: `Is Ramayana a Mythology ?`,
+                    answer: `
+                        Mythology means - collection of myths or stories about a specific person, culture etc
+                        Ramayan is not mythology - It is called itihāsa . The meaning of word itihāsa  is "It happened like this". Means Ramayana is the compilation of historical facts.
+                        Similarly Mahabharath is another itihāsa. 
+
+                        Hence, all our scriptures can be called as itihāsas or History and not mythology. The english word "History" has its roots in "itihāsa "
+                ` },
+                102: {
+                    question: `Who documented Ramayana ? Why the word "documented" is used instead of the word "written"? `,
+                    answer: `
+                        Valmiki documented the Ramayana.
+
+                        Valmiki got a special blessing from Lord Brahma. This blessing allowed him to see and understand everything that happened in the Ramayana, including the thoughts and actions of all the characters. So, Valmiki did not imagine the story; he just wrote down what truly happened. We say Valmiki "documented" the Ramayana instead of "wrote" because he recorded the true events he saw, rather than creating a story from his imagination
+
+                        Lord Brahma also blessed Valmiki that as long as there are mountains and rivers on Earth, the Ramayana he documented would always exist.
+                `},
+                103: {
+                    question: `What is the story of Valmiki? What are the learning outcomes from his life ?`,
+                    answer: `
+                        Valmiki was originally a man named Ruksha. 
+
+                        He meditated on the Lord's name and did tapasya (deep prayer and penance) for many thousands of years. 
+
+                        During this time, an anthill grew around him. When it rained, the anthill melted, and he came out. 
+
+                        Because he emerged from the anthill, which is called "Valmeekam" in Sanskrit, he was given the name Valmiki.
+
+                        We can summarise the learnings from Valmiki's life...in one sentence - "Krushi vunte Manushulu rushulu avutaru" "కృషి ఉంటే మనుషులు ఋషులు అవుతారు"
+
+                `},
+                104: {
+                    question: `Who is the teacher of Rama ?`,
+                    answer: `
+                        Sage Vasishta and Sage Vishwamitra are his teachers.
+
+                        During his time in the forests, he learned many things from different sages living there.
+
+                        Rama is the Supreme Lord in human form. Even God is showing us how important it is to learn from teachers.
+                `},
+                105: {
+                    question: `What is the meaning of the word - Rama and what are the other names Rama ?`,
+                    answer: `
+                        The meaning of the Rama is the one who gives pleasure
+
+                        Other names of Rama are 
+
+                        Kausalya Tanaya - Son of Kausalya
+                        Raghava - Belongs to the Raghu dynasty
+                        Dasaratha Nandana - Son of Dasaratha
+                        Kodanda Rama - His bow's name is Kodanda
+                        Sita Pati - Husband of Sita Devi
+                `},
+                106: {
+                    question: `What is the size of the Ramayana?`,
+                    answer: `
+                        The Ramayana has 7 Kandas (parts):
+
+                        Bala Kanda
+                        Ayodhyakanda
+                        Aranyakanda
+                        Kishkinda Kanda
+                        Sundara Kanda
+                        Yuddha Kanda
+                        Uttara Kanda
+                        It contains more than 500 sargas (chapters) and 24,000 slokas (verses).
+                `}
+            },
+            BhagavadGita: {
+                200: {
+                    question: `What is Bhagavad Gita ?`,
+                    answer: `
+                        "Gita" means song, and "Bhagavat" means Lord Krishna. The Bhagavad Gita is a song of God spoken by Lord Krishna to Arjuna. It is like a manual for living a meaningful and successful life, so it is important for all of us to learn the Gita.
+
+                        The Bhagavad Gita has 18 chapters and 700 shloka (verses).
+                `},
+                201: {
+                    question: `Arjuna was not the first one to hear Bhagavad Gita . Millions of years prior, Lord Krishna gave this knowledge of Gita to Sun God!  Where is this fact told in Bhagavad Gita ?`,
+                    answer: `
+                        Lord Krishna says this in Chapter 4, Shloka 1 of Gita
+                        imaṁ vivasvate yogaṁ
+                        proktavān aham avyayam
+                        vivasvān manave prāha
+                        manur ikṣvākave 'bravīt
+
+                        Here Lord says that "Long ago, I shared this special knowledge with the Sun God, Vivasvān. He then shared it with Manu, who is the father of all people. Manu passed it onto Ikṣvāku"
+                `},
+                202: {
+                    question: `When Bhagavad Gita was already spoke to Sun God long ago and it was being passed on for generations, why did Lord Krishna give this knowledge again to Arjuna ?`,
+                    answer: `
+                        Lord Krishna says this in Chapter 4, Shloka 2 of Gita
+                        evaṁ paramparā-prāptam
+                        imaṁ rājarṣayo viduḥ
+                        sa kāleneha mahatā
+                        yogo naṣṭaḥ parantapa
+
+                        Here Lord tells Arjuna that "Along though I already gave this knowledge to Sun God long ago, over time, the true purpose of this special knowledge was lost . That’s why I am now sharing this important knowledge with you again."
+                `},
+                203: {
+                    question: `Where does Lord Krishna say that He has chosen Arjuna for giving this knowledge of Gita - because Arjuna was His devotee and Friend`,
+                    answer: `
+                        Lord Krishna says this in Chapter 4, Shloka 3 of Gita
+                        sa evāyaṁ mayā te 'dya
+                        yogaḥ proktaḥ purātanaḥ
+                        bhakto 'si me sakhā ceti
+                        rahasyaṁ hy etad uttamam
+
+                        Here Lord tells Arjuna that "you are my devotee and friend, I am sharing this divine mystery"
+                `},
+                204: {
+                    question: `"Whenever people stop doing what is right and start doing what is wrong, I come down to help and restore goodness" - Guess the Verse`,
+                    answer: `
+                        Bhagavad Gita Chapter 4 - Sholka 7
+
+                        yadā yadā hi dharmasya
+                        glānir bhavati bhārata
+                        abhyutthānam adharmasya
+                        tadātmānaṁ sṛjāmy aham
+                `},
+                205: {
+                    question: `"To help good people and punish bad people, and to make sure that right practices are followed, I come to Earth again and again, through different ages" - Guess the verse`,
+                    answer: `
+                        Bhagavad Gita Chapter 4 - Shloka 8
+
+                        paritrāṇāya sādhūnāṁ
+                        vināśāya ca duṣkṛtām
+                        dharma-saṁsthāpanārthāya
+                        sambhavāmi yuge yuge
+                `},
+                206: {
+                    question: `"If one offers Me with love and devotion a leaf, a flower, fruit a water, I will accept it" - Guess the Verse`,
+                    answer: `
+                        Bhagavad Gita Chapter 9 - Shloka 26
+
+                        patraṁ puṣpaṁ phalaṁ toyaṁ
+                        yo me bhaktyā prayacchati
+                        tad ahaṁ bhakty-upahṛtam
+                        aśnāmi prayatātmanaḥ
+                `},
+                207: {
+                    question: `"Just like how we grow from being a child to an adult and then to an old person, our soul also moves to a new body when we die. A wise person understands this and is not disturbed by this change" - Guess the verse`,
+                    answer: `
+                        Bhagavad Gita Chapter 2 - Shloka 13
+
+                        dehino 'smin yathā dehe
+                        kaumāraṁ yauvanaṁ jarā
+                        tathā dehāntara-prāptir
+                        dhīras tatra na muhyati
+                `},
+                208: {
+                    question: `I" am the ultimate goal of all sacrifices and austerities; I am the Supreme controller of all planets; and I am the friend and well-wisher of all living entities" - Guess the verse`,
+                    answer: `
+                        Bhagavad Gita Chapter 5 - Shloka 29
+
+                        bhoktāraṁ yajña-tapasāṁ
+                        sarva-loka-maheśvaram
+                        suhṛdaṁ sarva-bhūtānāṁ
+                        jñātvā māṁ śāntim ṛcchati
+                `}
+            }
+        };
+
+        function generateButtons() {
+            const buttonContainer = document.getElementById('buttonContainer');
+            const buttonNumbers = new Set();
+            for (const category in questions) {
+                for (const number in questions[category]) {
+                    buttonNumbers.add(number);
+                }
+            }
+
+            buttonNumbers.forEach(number => {
+                const button = document.createElement('button');
+                button.textContent = number;
+                button.onclick = () => window.location.href = `question.html?number=${number}`;
+                buttonContainer.appendChild(button);
+            });
+        }
+
+        generateButtons();
+    </script>
+</body>
+</html>

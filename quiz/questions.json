@@ -1,0 +1,35 @@
+{
+    "Ramayan": {
+        "108": {
+            "question": "What is the meaning of Ramayan?",
+            "answer": "Rama + ayana - means the Journey of Ramachandra (His walk of Life)\n\nRamaa + ayana - The Life of Sita.\n\nRamaa + ayana - Life of the people who are related to Rama.\n\nAll the characters of Rama from a small Vanara to Ayodhya King Dasaratha, belong to Rama. So it’s the life history of each and every one related to Rama."
+        },
+        "100": { "question": "Who was the father of Lord Rama?", "answer": "King Dasharatha" },
+        "101": { "question": "What was the name of Lord Rama's wife?", "answer": "Sita" },
+        "102": { "question": "Who kidnapped Sita?", "answer": "Ravana" },
+        "103": { "question": "Which bird tried to save Sita from being kidnapped?", "answer": "Jatayu" },
+        "104": { "question": "Who was Lord Rama's brother?", "answer": "Lakshmana" },
+        "105": { "question": "Where was Lord Rama exiled to?", "answer": "The forest for 14 years" },
+        "106": { "question": "Who built the bridge to Lanka?", "answer": "Hanuman and the Vanara army" },
+        "107": { "question": "Who was the king of Lanka?", "answer": "Ravana" },
+        "109": { "question": "Who was the mother of Lord Rama?", "answer": "Kausalya" }
+    },
+    "Mahabharat": {
+        "200": { "question": "Who was the eldest Pandava?", "answer": "Yudhishthira" },
+        "201": { "question": "Who was Arjuna's mentor in archery?", "answer": "Drona" },
+        "202": { "question": "Who played the game of dice against the Pandavas?", "answer": "Duryodhana" },
+        "203": { "question": "Who was the wife of the five Pandavas?", "answer": "Draupadi" },
+        "204": { "question": "Who was the charioteer of Arjuna?", "answer": "Krishna" },
+        "205": { "question": "What was the name of the war in Mahabharata?", "answer": "Kurukshetra War" },
+        "206": { "question": "Who was the father of Bhishma?", "answer": "King Shantanu" }
+    },
+    "Festival": {
+        "300": { "question": "Which festival is known as the festival of lights?", "answer": "Diwali" },
+        "301": { "question": "Which festival is celebrated by flying kites?", "answer": "Makar Sankranti" },
+        "302": { "question": "Which festival marks the arrival of spring?", "answer": "Holi" },
+        "303": { "question": "Which festival is celebrated with colors?", "answer": "Holi" },
+        "304": { "question": "Which festival is celebrated to honor the harvest season?", "answer": "Pongal" },
+        "305": { "question": "Which festival is celebrated by fasting and offering prayers to the moon?", "answer": "Karva Chauth" },
+        "306": { "question": "Which festival celebrates the victory of good over evil?", "answer": "Dussehra" }
+    }
+}
