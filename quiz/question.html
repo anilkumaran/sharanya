@@ -106,7 +106,7 @@
     <div class="image-container" id="imageContainer">
         <img id="questionImage" src="" alt="Question Image">
     </div>
-    <button id="showAnswerButton" onclick="showAnswer()">Show Answer</button>
+    <!-- <button id="showAnswerButton" onclick="showAnswer()">Show Answer</button> -->
     <div class="card" id="answer">Answer will be shown here.</div>
     <button id="backButton" onclick="goBack()">Back</button>
 
@@ -488,10 +488,11 @@ It is told the total cost constructing of this temple , was as paid to Golconda 
             if (e.key === 'Escape') {
                 e.preventDefault();
                 goBack();
-            } else if (e.key === ' ') {
-                e.preventDefault();
-                showAnswer();
             }
+            // else if (e.key === ' ') {
+            //     e.preventDefault();
+            //     showAnswer();
+            // }
         });
     </script>
 </body>
