@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +13,7 @@
             margin: 0;
             padding: 20px;
         }
+
         h1 {
             color: #007bff;
             margin-bottom: 30px;
@@ -22,6 +24,7 @@
             font-weight: bold;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
+
         .card {
             background-color: #ffffff;
             padding: 20px;
@@ -32,33 +35,31 @@
             margin: 20px auto;
             max-width: 100%;
             border: 2px solid #007bff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            white-space: pre-wrap;
         }
+
         #question {
             font-size: 28px;
             color: #333;
             font-weight: bold;
+            white-space: pre-wrap;
+            text-align: center;
+            display: none;
         }
+
         #answer {
             font-size: 26px;
             margin-top: 20px;
             display: none;
-            color: #333;
+            color: #ffffff;
             font-weight: bold;
-            background-color: #e9f7ef;
+            background-color: #28a745;
             padding: 20px;
             border-radius: 15px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             white-space: pre-wrap;
-            opacity: 0; /* Initially hidden */
-            transition: opacity 1s ease-in-out, max-height 1s ease-in-out;
-            max-height: 0; /* Initially collapsed */
-            overflow: hidden;
+            text-align: center;
         }
+
         button {
             padding: 14px 28px;
             font-size: 22px;
@@ -70,22 +71,41 @@
             transition: background-color 0.3s, transform 0.3s;
             margin-top: 20px;
         }
+
         button:hover {
             background-color: #0056b3;
             transform: scale(1.1);
         }
+
         #backButton {
             margin-top: 30px;
             background-color: #6c757d;
         }
+
         #backButton:hover {
             background-color: #5a6268;
         }
+
+        .image-container {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
+
 <body>
     <h1>BWS Culture Connect Quiz</h1>
     <div class="card" id="question">Loading...</div>
+    <div class="image-container" id="imageContainer">
+        <img id="questionImage" src="" alt="Question Image">
+    </div>
     <button id="showAnswerButton" onclick="showAnswer()">Show Answer</button>
     <div class="card" id="answer">Answer will be shown here.</div>
     <button id="backButton" onclick="goBack()">Back</button>
@@ -266,7 +286,7 @@ tathā dehāntara-prāptir
 dhīras tatra na muhyati
                 `},
                 208: {
-                    question: `I" am the ultimate goal of all sacrifices and austerities; I am the Supreme controller of all planets; and I am the friend and well-wisher of all living entities" - Guess the verse`,
+                    question: `"I am the ultimate goal of all sacrifices and austerities; I am the Supreme controller of all planets; and I am the friend and well-wisher of all living entities" - Guess the verse`,
                     answer: `
 Bhagavad Gita Chapter 5 - Shloka 29
 
@@ -275,27 +295,188 @@ sarva-loka-maheśvaram
 suhṛdaṁ sarva-bhūtānāṁ
 jñātvā māṁ śāntim ṛcchati
                 `}
+            },
+            Darshana: {
+                300: {
+                    question: ``,
+                    answer: `Sudarshana - Discus used by Lord Krishna to punish demons`,
+                    image: "images/1.sudarshan-chakra.jpg"
+                },
+                301: {
+                    question: ``,
+                    answer: `Panchajanya - Conch used by Lord Krishna during Mahabharata War`,
+                    image: "images/2.Sankh.jpeg"
+                },
+                302: {
+                    question: ``,
+                    answer: `Kaumodaki - Mace used by Lord Krishna when fighting Jambavan`,
+                    // image: "images/3.Kaumodaki.jpg"
+                    image: "images/3.Kaumodaki.png"
+                },
+                303: {
+                    question: ``,
+                    answer: `Nandaka - Sword used by Lord Krishna during Rukmini's abduction`,
+                    image: "images/4.Sword.jpeg"
+                },
+                304: {
+                    question: ``,
+                    answer: `Saranga - Bow that Lord Krishna used when He fought Narakasura`,
+                    image: "images/5.Saranga.png"
+
+                },
+                305: {
+                    question: ``,
+                    answer: `Anatha - Serpent and servant of Lord Krishna who incarnated as Lord Balaram`,
+                    image: "images/6.Snake.png"
+                    // image: "images/6.snake.webp"
+                },
+                306: {
+                    question: ``,
+                    answer: `Garuda - The divine eagle mount of Lord Krishna who helped in many battles`,
+                    // image: "images/7.Garuda.jpg"
+                    image: "images/7.Garuda.png"
+                },
+                307: {
+                    question: ``,
+                    answer: `Vanamala - Garland that the young Lord Krishna dorns`,
+                    // image: "images/8.garland.jpg"
+                    image: "images/8.garland.png"
+                },
+                308: {
+                    question: ``,
+                    answer: `Vaijayanthi - Mala - An ornament worn by Lord Krishna as a mark of victory`,
+                    image: "images/9.Vaijayanti-Mala.webp"
+                },
+                309: {
+                    question: ``,
+                    answer: `Kauthuba - Lord Krishna's ornament which He wears on His chest`,
+                    image: "images/10.kauthuba.webp"
+                },
+                310: {
+                    question: ``,
+                    answer: `Murali - Lord Krishna used to delight everyone in Vrindavan by playing His Flute`,
+                    image: "images/11.flute.jpeg"
+                },
+                311: {
+                    question: ``,
+                    answer: `Mayura Piccha - Peacock feather that Lord Krishna always wore on His head`,
+                    // image: "images/12.Morpankh.jpeg"
+                    image: "images/12.Morpankh.png"
+                }
+            },
+            IndianHeritageSites: {
+                400: {
+                    question: `This temple is located on seven hills`,
+                    answer: `
+                    Tirupati / Tirumala  
+
+Here Lord Vishnu resides in the form of Lord Venkateswara. 
+
+This temple is famous for its tastiest Laddu Prasadam
+
+While having darshana of Lord , devotee loudly say " Govinda"....can I request all of you to say " Govinda...Govinda"
+                    `
+                },
+                401: {
+                    question: `This is the place where the main deities ( Mula Vigraha) are taken out of temples once in a year`,
+                    answer: `
+                    Jagannath Puri 
+
+Here the main deities of Lord Jagannath, Baladev and Subhadra come out in process during the World famous Ratha Yatra.
+
+Let's all say "Jai Jagannath, Jai Jagannath, Jai Jagannath"
+                    `
+                },
+                402: {
+                    question: `The largest functioning Hindu temple is spread over an area of about 155 acres and it has tallest rajagopuram in the world`,
+                    answer: `
+                    Srirangam - Sri Ranganatha Swamy
+
+One speciality of this temple is that Sri Ranganatha Swamy deity was the family deity of Lord Rama. Lord Rama gifted this deity to Vibhishana
+                    `
+                },
+                403: {
+                    question: `This was the last capital of the great Kingdom of Vijayanagar`,
+                    answer: `
+                    Hampi ( Karnataka)
+
+Hampi is the town of ruins of the Vijayanagara Empire. Now it is UNESCO recognised heritage site
+
+Here , the Vittala Temple is a beautiful temple with many wonders. Inside the temple, there are 56 special stone pillars called musical pillars. When you tap these pillars, each pillar makes different music sound.  
+                    `
+                },
+                404: {
+                    question: `This is one of the ancient temple structure in India having the biggest Nandi carved out of a single stone. It is located in Andhra Pradesh`,
+                    answer: `
+                    Lepakshi 
+The Lepakshi Temple is a wonderful heritage site in Anantapur District of  Andhra Pradesh. It was built a long time ago during the Vijayanagara rule
+
+One engineering marvel here is the hanging pillar 
+                    `
+                },
+                405: {
+                    question: `It's the only temple heritage structure in the country to be known by the name of its sculptor.  It is located in Telangana`,
+                    answer: `
+                    It is Ramappa Temple Near Warangal.  
+
+Now it is UNESCO recognised heritage site. It is a temple dedicated to Lord Shiva , built by Kakatiya Kings
+
+Another amazing thing about this temple is that it is built with bricks so light they can float on water. 
+
+The temple, located in a valley, took almost 40 years to build. 
+                    `
+                },
+                406: {
+                    question: `This temple is known as Ayodhya of South India. `,
+                    answer: `
+                    Bhadrachalam Temple in Telangana
+
+This temple was built by Bhata Ramadasu, who is also famous his kirtans on Lord Rama. 
+ 
+It is told the total cost constructing of this temple , was as paid to Golconda King by Lord Rama Himself,  in the form of gold coins. Those coins belonged to Treta-yuga, the era of Lord Rama. Till date two coins are preserved in the temple museum
+                    `
+                },
             }
         };
 
         const category = number >= 100 && number < 200 ? "Ramayan" :
                         number >= 200 && number < 300 ? "BhagavadGita" :
-                        number >= 300 && number < 400 ? "Festival" : null;
+                        number >= 300 && number < 400 ? "Darshana" :
+                        number >= 400 && number < 500 ? "IndianHeritageSites" : null;
 
         if (category && questions[category][number]) {
-            const { question, answer } = questions[category][number];
-            document.getElementById('question').textContent = question.trim();
-            document.getElementById('answer').textContent = answer.trim();
+            const { question, answer, image } = questions[category][number];
+            const questionElement = document.getElementById('question');
+            const answerElement = document.getElementById('answer');
+            const imgContainer = document.getElementById('imageContainer');
+
+            if (image) {
+                const imgElement = document.getElementById('questionImage');
+                imgElement.src = image;
+                imgContainer.style.display = 'block';
+            } else {
+                questionElement.textContent = question;
+                questionElement.style.display = 'block';
+            }
+
+            answerElement.textContent = answer;
         } else {
             document.getElementById('question').textContent = "Invalid selection or question not available.";
             document.getElementById('showAnswerButton').style.display = "none";
         }
 
         function showAnswer() {
-            const answerDiv = document.getElementById('answer');
-            answerDiv.style.display = 'block';
-            answerDiv.style.maxHeight = '1000px';  // Expand to reveal
-            answerDiv.style.opacity = '1';        // Fade in effect
+            const answerElement = document.getElementById('answer');
+            answerElement.style.display = 'block';
+            answerElement.style.opacity = 0;
+
+            let opacity = 0;
+            const fadeIn = setInterval(() => {
+                opacity += 0.1;
+                answerElement.style.opacity = opacity;
+                if (opacity >= 1) clearInterval(fadeIn);
+            }, 50);
+
             document.getElementById('showAnswerButton').style.display = 'none';
         }
 
@@ -303,7 +484,7 @@ jñātvā māṁ śāntim ṛcchati
             window.history.back();
         }
 
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') {
                 e.preventDefault();
                 goBack();
