@@ -88,6 +88,17 @@
             background-color: #007bff;
         }
 
+        #homeButton {
+            margin-top: 30px;
+            /* background-color: #6c757d; */
+            background-color: #007bff;
+        }
+
+        #homeButton:hover {
+            /* background-color: #5a6268; */
+            background-color: #007bff;
+        }
+
         .image-container {
             display: none;
             margin-top: 20px;
@@ -110,7 +121,8 @@
     </div>
     <!-- <button id="showAnswerButton" onclick="showAnswer()">Show Answer</button> -->
     <div class="card" id="answer">Answer will be shown here.</div>
-    <button id="backButton" onclick="goBack()"><span>&#x1F3E0;</span> Home</button>
+    <!-- <button id="backButton" onclick="goBack()"><span>&#x1F3E0;</span> Back</button> -->
+    <button id="homeButton" onclick="goHome()"><span>&#x1F3E0;</span> Home</button>
 
     <script>
         const queryString = window.location.search;
@@ -522,6 +534,10 @@ It is told the total cost constructing of this temple , was as paid to Golconda 
 
         function goBack() {
             window.history.back();
+        }
+
+        function goHome() {
+            window.location.href = 'index.html';
         }
 
         document.addEventListener('keydown', function (e) {
