@@ -11,7 +11,7 @@
             background-color: #f0f8ff;
             text-align: center;
             margin: 0;
-            padding: 20px;
+            /* padding: 20px; */
         }
 
         h1 {
@@ -438,13 +438,51 @@ This temple was built by Bhata Ramadasu, who is also famous his kirtans on Lord 
 It is told the total cost constructing of this temple , was as paid to Golconda King by Lord Rama Himself,  in the form of gold coins. Those coins belonged to Treta-yuga, the era of Lord Rama. Till date two coins are preserved in the temple museum
                     `
                 },
+            },
+            Festivals: {
+                500: {
+                    question: ``,
+                    answer: ``,
+                    image: "images/festivals/1.diwali.jpeg"
+                },
+                501: {
+                    question: ``,
+                    answer: ``,
+                    image: "images/festivals/2.dussehra.jpeg"
+                },
+                502: {
+                    question: ``,
+                    answer: ``,
+                    image: "images/festivals/3.sankranti.jpeg"
+                },
+                503: {
+                    question: ``,
+                    answer: ``,
+                    image: "images/festivals/4.holi.jpeg"
+                },
+                504: {
+                    question: ``,
+                    answer: ``,
+                    image: "images/festivals/5.onum.jpeg"
+                },
+                505: {
+                    question: ``,
+                    answer: ``,
+                    image: "images/festivals/6.ganesh_chaturthi.jpeg"
+                },
+                506: {
+                    question: ``,
+                    answer: ``,
+                    image: "images/festivals/7.gita_jayanthi.jpeg"
+                },
             }
         };
 
         const category = number >= 100 && number < 200 ? "Ramayan" :
                         number >= 200 && number < 300 ? "BhagavadGita" :
                         number >= 300 && number < 400 ? "Darshana" :
-                        number >= 400 && number < 500 ? "IndianHeritageSites" : null;
+                        number >= 400 && number < 500 ? "IndianHeritageSites" :
+                        number >= 500 && number < 600 ? "Festivals" : null;
 
         if (category && questions[category][number]) {
             const { question, answer, image } = questions[category][number];

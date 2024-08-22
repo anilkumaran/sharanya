@@ -10,7 +10,7 @@
             background-color: #f0f8ff;
             text-align: center;
             margin: 0;
-            padding: 20px;
+            /* padding: 20px; */
         }
         .logo {
             /* max-width: 500px; */
@@ -51,12 +51,16 @@
             color: #fff;
             transform: scale(1.1);
         }
+        .grid-item.selected {
+            background-color: #007bff; /* Or any color you want */
+            color: #fff;
+        }
         #rapidRoundButton {
             margin-top: 30px;
             padding: 14px 28px;
             font-size: 22px;
             color: #fff;
-            background-color: #dc3545;
+            background-color: #7a10de;
             border: none;
             border-radius: 8px;
             cursor: pointer;
@@ -66,6 +70,21 @@
             background-color: #c82333;
             transform: scale(1.1);
         }
+        #clearSelectionButton {
+            margin-top: 30px;
+            padding: 14px 28px;
+            font-size: 22px;
+            color: #fff;
+            background-color: #dd4958;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        #clearSelectionButton:hover {
+            background-color: #c82333;
+        }
     </style>
 </head>
 <body>
@@ -73,6 +92,7 @@
     <h1>BWS Culture Connect Quiz</h1>
     <div class="grid-container" id="questionGrid"></div>
     <button id="rapidRoundButton" onclick="startRapidRound()">Rapid Round</button>
+    <button id="clearSelectionButton" onclick="clearSelection()">Clear Selection</button>
 
     <script>
         const questions = {
@@ -396,6 +416,43 @@ This temple was built by Bhata Ramadasu, who is also famous his kirtans on Lord 
 It is told the total cost constructing of this temple , was as paid to Golconda King by Lord Rama Himself,  in the form of gold coins. Those coins belonged to Treta-yuga, the era of Lord Rama. Till date two coins are preserved in the temple museum
                     `
                 },
+            },
+            Festivals: {
+                500: {
+                    question: ``,
+                    answer: ``,
+                    image: "images/festivals/1.diwali.jpeg"
+                },
+                501: {
+                    question: ``,
+                    answer: ``,
+                    image: "images/festivals/2.dussehra.jpeg"
+                },
+                502: {
+                    question: ``,
+                    answer: ``,
+                    image: "images/festivals/3.sankranti.jpeg"
+                },
+                503: {
+                    question: ``,
+                    answer: ``,
+                    image: "images/festivals/4.holi.jpeg"
+                },
+                504: {
+                    question: ``,
+                    answer: ``,
+                    image: "images/festivals/5.onum.jpeg"
+                },
+                505: {
+                    question: ``,
+                    answer: ``,
+                    image: "images/festivals/6.ganesh_chaturthi.jpeg"
+                },
+                506: {
+                    question: ``,
+                    answer: ``,
+                    image: "images/festivals/7.gita_jayanthi.jpeg"
+                },
             }
         };
 
@@ -420,13 +477,19 @@ It is told the total cost constructing of this temple , was as paid to Golconda 
             localStorage.setItem('shuffledQuestions', JSON.stringify(shuffledNumbers));
         }
 
+        const selectedQuestions = JSON.parse(localStorage.getItem('selectedQuestions')) || [];
 
         const gridContainer = document.getElementById('questionGrid');
         shuffledNumbers.forEach(number => {
             const gridItem = document.createElement('div');
             gridItem.className = 'grid-item';
             gridItem.textContent = number;
+            if (selectedQuestions.includes(number)) {
+                gridItem.classList.add('selected');
+            }
             gridItem.onclick = () => {
+                selectedQuestions.push(number);
+                localStorage.setItem('selectedQuestions', JSON.stringify(selectedQuestions));
                 window.location.href = `question.html?number=${number}`;
             };
             gridContainer.appendChild(gridItem);
@@ -436,6 +499,17 @@ It is told the total cost constructing of this temple , was as paid to Golconda 
         function startRapidRound() {
             window.location.href = 'rapid_round.html';
         }
+
+        function clearSelection() {
+            localStorage.removeItem('selectedQuestions');
+
+            const selectedItems = document.querySelectorAll('.grid-item.selected');
+            selectedItems.forEach(item => {
+                item.classList.remove('selected');
+            });
+        }
+
+        // renderQuestions();
     </script>
 </body>
 </html>
